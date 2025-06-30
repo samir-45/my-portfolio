@@ -1,7 +1,6 @@
 import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 
 const navItems = [
   { name: "Home", href: "#hero" },
@@ -17,20 +16,24 @@ export const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.screenY > 10);
+      setIsScrolled(window.scrollY > 10);
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
   return (
     <nav
       className={cn(
-        "fixed w-full z-40 transition-all bg-transparent duration-300",
-        isScrolled ? "py-3 bg-background/80 backdrop-blur-md shadow-xs" : "py-5"
+        "fixed w-full z-40 transition-all duration-300",
+        isScrolled
+          ? "py-3 bg-white/10 backdrop-blur-md border-b border-white/10 shadow"
+          : "py-5 bg-transparent"
       )}
     >
       <div className="container flex items-center justify-between">
+        {/* Logo */}
         <a
           className="text-xl font-bold text-primary flex items-center"
           href="#hero"
@@ -41,40 +44,41 @@ export const Navbar = () => {
           </span>
         </a>
 
-        {/* desktop nav */}
+        {/* Desktop Menu */}
         <div className="hidden md:flex space-x-8">
           {navItems.map((item, key) => (
             <a
               key={key}
               href={item.href}
-              className="text-foreground/80 border-b-2 border-b-transparent hover:border-b-primary hover:text-primary transition-colors duration-300"
+              className="text-foreground/80 border-b-2 font-semibold border-b-transparent hover:border-b-primary hover:text-primary transition-colors duration-300"
             >
               {item.name}
             </a>
-            
           ))}
         </div>
-                      <Link
-                href=""
-                className="px-6 py-2 rounded-full border border-primary text-primary hover:bg-primary/10 transition-colors duration-300"
-              >
-                Download CV
-              </Link>
-        
 
-        {/* mobile nav */}
+        {/* Download CV Button */}
+        <a
+          href="/MahinKhanResume.pdf"
+          download="Mahin_CV.pdf"
+          className="hidden md:inline-block px-6 py-2 rounded-full border border-primary text-primary hover:bg-primary/10 transition-colors duration-300"
+        >
+          Download CV
+        </a>
 
+        {/* Mobile Toggle Button */}
         <button
           onClick={() => setIsMenuOpen((prev) => !prev)}
           className="md:hidden p-2 text-foreground z-50"
           aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
         >
-          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}{" "}
+          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
 
+        {/* Mobile Menu */}
         <div
           className={cn(
-            "fixed inset-0 bg-background/95 backdroup-blur-md z-40 flex flex-col items-center justify-center",
+            "fixed inset-0 bg-background/95 backdrop-blur-md z-40 flex flex-col items-center justify-center",
             "transition-all duration-300 md:hidden",
             isMenuOpen
               ? "opacity-100 pointer-events-auto"
@@ -92,6 +96,16 @@ export const Navbar = () => {
                 {item.name}
               </a>
             ))}
+
+            {/* Download CV Button in Mobile Menu */}
+            <a
+              href="/cv.pdf"
+              download="Mahin_CV.pdf"
+              className="text-primary border border-primary px-6 py-2 rounded-full hover:bg-primary/10 transition-colors duration-300 text-center"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Download CV
+            </a>
           </div>
         </div>
       </div>
