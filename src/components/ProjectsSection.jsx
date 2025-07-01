@@ -51,9 +51,10 @@ export const ProjectsSection = () => {
           {projects.map((project, key) => (
             <div
               key={key}
-              className="group bg-card flex rounded-lg overflow-hidden shadow-xs card-hover"
+              className="group bg-card flex flex-col md:flex-row rounded-lg overflow-hidden shadow-xs card-hover"
             >
-              <div className="h-60 min-w-md overflow-hidden">
+              {/* Image */}
+              <div className="h-96 lg:h-72 min-w-md overflow-hidden">
                 <img
                   src={project.image}
                   alt={project.title}
@@ -61,6 +62,7 @@ export const ProjectsSection = () => {
                 />
               </div>
 
+              {/* Info */}
               <div className="p-6 flex flex-col justify-between">
 
                 {/* Title */}

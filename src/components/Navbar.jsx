@@ -38,10 +38,7 @@ export const Navbar = () => {
           className="text-xl font-bold text-primary flex items-center"
           href="#hero"
         >
-          <span className="relative z-10">
-            <span className="text-glow text-foreground"> Mahin </span>{" "}
-            Portfolio
-          </span>
+          <img className="w-20 rounded-md" src="/logo-mini.png" alt="" />
         </a>
 
         {/* Desktop Menu */}
