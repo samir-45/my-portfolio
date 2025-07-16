@@ -6,7 +6,7 @@ import {
   Phone,
   Send,
   Twitch,
-  Twitter,
+  Github
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useToast } from "@/hooks/use-toast";
@@ -93,17 +93,11 @@ export const ContactSection = () => {
             <div className="pt-8">
               <h4 className="font-medium text-start mb-4"> Connect With Me</h4>
               <div className="flex space-x-4 justify-start">
-                <a href="#" target="_blank">
+                <a href="nkedin.com/in/devmahin" target="_blank">
                   <Linkedin />
                 </a>
-                <a href="#" target="_blank">
-                  <Twitter />
-                </a>
-                <a href="#" target="_blank">
-                  <Instagram />
-                </a>
-                <a href="#" target="_blank">
-                  <Twitch />
+                <a href="https://github.com/samir-45" target="_blank">
+                  <Github />
                 </a>
               </div>
             </div>
