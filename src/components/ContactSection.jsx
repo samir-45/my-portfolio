@@ -1,11 +1,9 @@
 import {
-  Instagram,
   Linkedin,
   Mail,
   MapPin,
   Phone,
   Send,
-  Twitch,
   Github
 } from "lucide-react";
 import { cn } from "@/lib/utils";

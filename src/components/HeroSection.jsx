@@ -1,5 +1,5 @@
 import { ArrowDown } from "lucide-react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 export const HeroSection = () => {
   return (
